@@ -20,7 +20,7 @@ export default function App() {
     <>
       <Typography variant="h3">Memo App</Typography>
       <Paper
-        elevation={5}
+        elevation={3}
         sx={{
           padding: "24px",
           margin: "10px 0px",
