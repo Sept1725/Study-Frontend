@@ -20,12 +20,12 @@ export default function App() {
       field: "action",
       headerName: "操作",
       width: 200,
-      renderCell: () => <OperateButtons />,
+      renderCell: (row) => <OperateButtons memoId={Number(row.id)} />,
     },
   ];
 
   const { memos } = useFetchMemos();
-  const { value, handle } = useCreateMemos();
+  const { value, handle: handleCreate } = useCreateMemos();
 
   return (
     <>
@@ -45,7 +45,7 @@ export default function App() {
           <Typography variant="subtitle1">タイトル</Typography>
           <TextField
             value={value.title}
-            onChange={handle.onChangeTitle}
+            onChange={handleCreate.onChangeTitle}
             helperText="※必須入力"
             sx={{ width: "50%" }}
           />
@@ -56,11 +56,11 @@ export default function App() {
             value={value.description}
             multiline
             rows={3}
-            onChange={handle.onChangeDescription}
+            onChange={handleCreate.onChangeDescription}
             sx={{ width: "70%" }}
           />
         </Box>
-        <Button variant="contained" onClick={handle.onClickCreate}>
+        <Button variant="contained" onClick={handleCreate.onClickCreate}>
           新規作成
         </Button>
       </Paper>
