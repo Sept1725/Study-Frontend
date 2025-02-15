@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 type MemoData = {
   title: string;
   description: string;
-  memoId: number;
+  id: number;
 };
 
 export const useFetchMemos = () => {
@@ -13,7 +13,7 @@ export const useFetchMemos = () => {
 
   useEffect(() => {
     axios
-      .get(apiUrl)
+      .get<MemoData[]>(apiUrl)
       .then((res) => res.data)
       .then((data) => setMemos(data))
       .catch(() => window.alert("メモ一覧の取得に失敗しました"));

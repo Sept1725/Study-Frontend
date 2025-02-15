@@ -9,6 +9,7 @@ import {
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 import { useFetchMemos } from "./hooks/useFetchMemos";
 import OperateButtons from "./OperateButtons";
+import { useCreateMemos } from "./hooks/useCreateMemo";
 
 export default function App() {
   const columns: GridColDef[] = [
@@ -24,6 +25,7 @@ export default function App() {
   ];
 
   const { memos } = useFetchMemos();
+  const { value, handle } = useCreateMemos();
 
   return (
     <>
@@ -41,13 +43,26 @@ export default function App() {
         </Typography>
         <Box sx={{ marginBottom: "16px" }}>
           <Typography variant="subtitle1">タイトル</Typography>
-          <TextField sx={{ width: "50%" }} />
+          <TextField
+            value={value.title}
+            onChange={handle.onChangeTitle}
+            helperText="※必須入力"
+            sx={{ width: "50%" }}
+          />
         </Box>
         <Box sx={{ marginBottom: "16px" }}>
           <Typography variant="subtitle1">詳細</Typography>
-          <TextField multiline rows={3} sx={{ width: "70%" }} />
+          <TextField
+            value={value.description}
+            multiline
+            rows={3}
+            onChange={handle.onChangeDescription}
+            sx={{ width: "70%" }}
+          />
         </Box>
-        <Button variant="contained">新規作成</Button>
+        <Button variant="contained" onClick={handle.onClickCreate}>
+          新規作成
+        </Button>
       </Paper>
       <Divider sx={{ margin: "20px 0px" }} />
       <DataGrid rows={memos} columns={columns} />
