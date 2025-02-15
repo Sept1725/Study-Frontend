@@ -15,7 +15,8 @@ export const useFetchMemos = () => {
     axios
       .get(apiUrl)
       .then((res) => res.data)
-      .then((data) => setMemos(data));
+      .then((data) => setMemos(data))
+      .catch(() => window.alert("メモ一覧の取得に失敗しました"));
   }, []);
 
   return { memos };
