@@ -8,13 +8,19 @@ import {
 } from "@mui/material";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 import { useFetchMemos } from "./hooks/useFetchMemos";
+import OperateButtons from "./OperateButtons";
 
 export default function App() {
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID" },
-    { field: "title", headerName: "タイトル" },
-    { field: "description", headerName: "詳細" },
-    { field: "action", headerName: "操作" },
+    { field: "title", headerName: "タイトル", width: 300 },
+    { field: "description", headerName: "詳細", width: 500 },
+    {
+      field: "action",
+      headerName: "操作",
+      width: 200,
+      renderCell: () => <OperateButtons />,
+    },
   ];
 
   const { memos } = useFetchMemos();
