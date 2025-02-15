@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
+import { useFetchMemos } from "./hooks/useFetchMemos";
 
 export default function App() {
   const columns: GridColDef[] = [
@@ -15,6 +16,8 @@ export default function App() {
     { field: "description", headerName: "詳細" },
     { field: "action", headerName: "操作" },
   ];
+
+  const { memos } = useFetchMemos();
 
   return (
     <>
@@ -41,7 +44,7 @@ export default function App() {
         <Button variant="contained">新規作成</Button>
       </Paper>
       <Divider sx={{ margin: "20px 0px" }} />
-      <DataGrid rows={[]} columns={columns} />
+      <DataGrid rows={memos} columns={columns} />
     </>
   );
 }
