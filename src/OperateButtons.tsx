@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { useDeleteMemo } from "./hooks/useDeleteMemo";
+import { useEditMemo } from "./hooks/useEditMemo";
 
 type OperationButtonsProps = {
   memoId: number;
@@ -7,9 +8,14 @@ type OperationButtonsProps = {
 
 export default function OperateButtons({ memoId }: OperationButtonsProps) {
   const { handle: handleDelete } = useDeleteMemo(memoId);
+  const { handle: handleEdit } = useEditMemo(memoId);
   return (
     <>
-      <Button variant="outlined" sx={{ marginRight: "10px" }}>
+      <Button
+        variant="outlined"
+        onClick={handleEdit.onClickEdit}
+        sx={{ marginRight: "10px" }}
+      >
         編集
       </Button>
       <Button
