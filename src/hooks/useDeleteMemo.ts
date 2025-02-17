@@ -5,9 +5,10 @@ export const useDeleteMemo = (memoId: number) => {
 
   const onClickDelete: React.MouseEventHandler<HTMLButtonElement> = () => {
     axios
-      .delete(`${apiUrl}/${memoId}`, { data: { id: 1 } })
+      .delete(`${apiUrl}/${memoId}`, { data: { id: memoId } })
       .then((res) => {
         window.alert(res.data.message);
+        window.location.reload();
       })
       .catch(() => window.alert("メモの削除に失敗しました"));
   };
