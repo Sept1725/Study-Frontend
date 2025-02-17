@@ -14,6 +14,7 @@ export const useCreateMemos = () => {
       })
       .then((res) => {
         window.alert(res.data.message);
+        window.location.reload();
         setTitle("");
         setDescription("");
       })
