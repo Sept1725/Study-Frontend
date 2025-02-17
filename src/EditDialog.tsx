@@ -21,7 +21,17 @@ export default function EditDialog({
   onClickEditEnd,
 }: EditDialogProps) {
   return (
-    <Dialog open={open} fullWidth>
+    <Dialog
+      open={open}
+      sx={{
+        "& .MuiDialog-container": {
+          "& .MuiPaper-root": {
+            width: "100%",
+            maxWidth: "70%",
+          },
+        },
+      }}
+    >
       <DialogTitle>メモ更新</DialogTitle>
       <DialogContent>
         <Typography variant="h5" sx={{ marginBottom: "16px" }}>
