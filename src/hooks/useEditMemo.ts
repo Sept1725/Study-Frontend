@@ -1,9 +1,15 @@
 import axios from "axios";
+import { useState } from "react";
 
 export const useEditMemo = (memoId: number) => {
   const apiUrl = "http://localhost:8000/memos";
+  const [open, setOpen] = useState(false);
 
-  const onClickEdit = () => {
+  const onClickEditStart = () => {
+    setOpen(true);
+  };
+
+  const onClickEditEnd = () => {
     axios
       .put(`${apiUrl}/${memoId}`, { title: "テスト", description: "詳細" })
       .then((res) => {
@@ -12,5 +18,12 @@ export const useEditMemo = (memoId: number) => {
       .catch(() => window.alert("メモの更新に失敗しました"));
   };
 
-  return { handle: { onClickEdit } };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return {
+    value: { open },
+    handle: { onClickEditStart, onClickEditEnd, handleClose },
+  };
 };

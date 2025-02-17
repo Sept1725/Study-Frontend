@@ -20,7 +20,7 @@ export default function MemoInputArea() {
         <TextField
           value={value.title}
           onChange={handleCreate.onChangeTitle}
-          helperText="※必須入力"
+          helperText="必須入力"
           sx={{ width: "50%" }}
         />
       </Box>
