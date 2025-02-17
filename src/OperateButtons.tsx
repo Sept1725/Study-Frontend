@@ -19,7 +19,11 @@ export default function OperateButtons({ memoId }: OperationButtonsProps) {
       >
         編集
       </Button>
-      <EditDialog open={value.open} handleClose={handleEdit.handleClose} />
+      <EditDialog
+        open={value.open}
+        handleClose={handleEdit.handleClose}
+        onClickEditEnd={handleEdit.onClickEditEnd}
+      />
       <Button
         variant="outlined"
         sx={{ marginLight: "10px" }}

@@ -1,11 +1,22 @@
-import { Dialog, DialogTitle } from "@mui/material";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
 
 type EditDialogProps = {
   open: boolean;
   handleClose: () => void;
+  onClickEditEnd: () => void;
 };
 
-export default function EditDialog({ open, handleClose }: EditDialogProps) {
+export default function EditDialog({
+  open,
+  handleClose,
+  onClickEditEnd,
+}: EditDialogProps) {
   return (
     <Dialog
       open={open}
@@ -17,6 +28,10 @@ export default function EditDialog({ open, handleClose }: EditDialogProps) {
       }}
     >
       <DialogTitle>メモ更新</DialogTitle>
+      <DialogContent>メモ更新画面</DialogContent>
+      <DialogActions>
+        <Button onClick={onClickEditEnd}>送信</Button>
+      </DialogActions>
     </Dialog>
   );
 }

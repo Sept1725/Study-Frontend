@@ -14,6 +14,7 @@ export const useEditMemo = (memoId: number) => {
       .put(`${apiUrl}/${memoId}`, { title: "テスト", description: "詳細" })
       .then((res) => {
         window.alert(res.data.message);
+        setOpen(false);
       })
       .catch(() => window.alert("メモの更新に失敗しました"));
   };
