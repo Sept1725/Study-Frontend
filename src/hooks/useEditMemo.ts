@@ -17,6 +17,7 @@ export const useEditMemo = (memoId: number) => {
       .then((res) => {
         window.alert(res.data.message);
         setOpen(false);
+        window.location.reload();
       })
       .catch(() => window.alert("メモの更新に失敗しました"));
   };
