@@ -11,14 +11,26 @@ import {
 
 type EditDialogProps = {
   open: boolean;
+  title: string;
+  description: string;
   handleClose: () => void;
   onClickEditEnd: () => void;
+  onChangeEditTitle: React.ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  >;
+  onChangeEditDescription: React.ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  >;
 };
 
 export default function EditDialog({
   open,
+  title,
+  description,
   handleClose,
   onClickEditEnd,
+  onChangeEditTitle,
+  onChangeEditDescription,
 }: EditDialogProps) {
   return (
     <Dialog
@@ -39,11 +51,22 @@ export default function EditDialog({
         </Typography>
         <Box sx={{ marginBottom: "16px" }}>
           <Typography variant="subtitle1">タイトル</Typography>
-          <TextField helperText="必須入力" sx={{ width: "50%" }} />
+          <TextField
+            value={title}
+            helperText="必須入力"
+            onChange={onChangeEditTitle}
+            sx={{ width: "50%" }}
+          />
         </Box>
         <Box sx={{ marginBottom: "16px" }}>
           <Typography variant="subtitle1">詳細</Typography>
-          <TextField multiline rows={3} sx={{ width: "70%" }} />
+          <TextField
+            multiline
+            value={description}
+            rows={3}
+            onChange={onChangeEditDescription}
+            sx={{ width: "70%" }}
+          />
         </Box>
       </DialogContent>
       <DialogActions>

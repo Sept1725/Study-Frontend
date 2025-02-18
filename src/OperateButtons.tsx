@@ -28,8 +28,12 @@ export default function OperateButtons({ memoId }: OperationButtonsProps) {
       </Button>
       <EditDialog
         open={value.open}
+        title={value.title}
+        description={value.description}
         handleClose={handleEdit.handleClose}
         onClickEditEnd={handleEdit.onClickEditEnd}
+        onChangeEditTitle={handleEdit.onChangeEditTitle}
+        onChangeEditDescription={handleEdit.onChangeEditDescription}
       />
     </>
   );
